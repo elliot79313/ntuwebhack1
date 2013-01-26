@@ -25,8 +25,10 @@
 #leftbar { 
 	width:300px;
 	float:left; 
-	padding-top:100px;
+	padding-top:20px;
 	padding-left:20px;
+	position:relative;
+	z-index:5;
 }
 .face {
   position: absolute; color:#FFF;
@@ -57,6 +59,7 @@
 #playerlist{
 	position:relative;
 	min-height:500px;
+	
 	border:1px solid #999;
 }
 #playerlist #header {
@@ -69,3 +72,13 @@
 	font-family:calibri;
 }
 #header img { margin-right:10px; vertical-align:-2px; }
+#queue img { width:300px;}
+#queue ul { margin:0px; padding:0px; overflow:hidden; max-height:620px;}
+#queue ul:hover { overflow:auto;}
+#queue li {border-bottom: 2px solid #FFF;width: 100%;}
+#queue li > div { position:relative; }
+#queue li > div .title  { position:absolute; top:0px; left:0px; background:-webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1.0) 100%);
+color:#FFF; padding:5px 10px;}
+#fixedPlayerController { position:fixed; top:50px; left:360px; z-index:10; }
+#fixedPlayerController  > div {  margin-right:40px; font-size:20px; font-family:Calibri; cursor:pointer; }
+#fixedPlayerController  img { width:40px; margin-right:5px; }
