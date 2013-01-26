@@ -2,29 +2,42 @@
 /* CSS Document */
 #inframe { }
 #experiment {
-   padding-top:80px;
-  -webkit-perspective: 600;
+  padding-top: 130px;
+  -webkit-perspective: 800;
   -webkit-perspective-origin: 50% 200px;
 }
 #cube {
 	margin-top:20px;
-  position: relative;
-  margin: 0 auto;
-  height: 500px;
-  width: 500px;
-  -webkit-transition: -webkit-transform 1s ease-in-out;
-  -webkit-transform-style: preserve-3d;
+  	position: relative;
+  	margin: 0 auto;
+ 	height: 500px;
+  	width: 500px;
+  	-webkit-transition: -webkit-transform 1s ease-in-out;
+  	-webkit-transform-style: preserve-3d;
 }
-#leftbar { width:300px; float:left; }
+.face  object { 
+	height:252px;
+	position: absolute;
+}
+.face .face_containter {
+	position:relative;
+}
+#leftbar { 
+	width:300px;
+	float:left; 
+	padding-top:100px;
+	padding-left:20px;
+}
 .face {
   position: absolute; color:#FFF;
-  height: 450px;
+  height: 255px;
   width: 450px;
   padding: 20px;
   background-color: rgba(50, 50, 50, 0.7);
+  
 }
 #cube .one  {
-  -webkit-transform: rotateX(90deg) translateZ(245px);
+  -webkit-transform: rotateX(90deg) translateZ(245px);background-color: transparent;
 }
 #cube .two {
   -webkit-transform: translateZ(245px);
@@ -39,5 +52,20 @@
   -webkit-transform: rotateY(-90deg) translateZ(245px);
 }
 #cube .six {
-  -webkit-transform: rotateX(-90deg) translateZ(245px) rotate(180deg);
+  -webkit-transform: rotateX(-90deg) translateZ(245px) rotate(180deg);background-color: transparent;
 }
+#playerlist{
+	position:relative;
+	min-height:500px;
+	border:1px solid #999;
+}
+#playerlist #header {
+	position:absolute; 
+	top:-14px; 
+	left: 20px;
+	background-color:#FFF;
+	font-size:18px;
+	padding:2px 10px;
+	font-family:calibri;
+}
+#header img { margin-right:10px; vertical-align:-2px; }

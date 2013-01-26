@@ -3,23 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Youtube 3D Player</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="Stylesheet" type="text/css" href="./css/reset.css" />
 <link rel="Stylesheet" type="text/css" href="./css/index.css" />
+<link rel="Stylesheet" type="text/css" href="./css/bootstrap.min.css" />
 <script type="text/javascript" src="./js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 <script type="text/javascript" src="./js/index.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="inframe">
 	<div id="leftbar">
-    	<div>Table</div>
+    	
+        <div id="playerlist">
+			<span id="header"><img src="http://www.cliparchiver.com/wp-content/uploads/logo_youtube_16x16.png"/>My Youtube Playlist</span>
+            <div id="queue">
+            </div>
+        </div>
+        
     </div>
     <div id="experiment">
         <div id="cube">
             <div class="face one">
-                    1
+                 1
             </div>
             <div class="face two">
-                    2
+            	<div class="face_containter">
+                	<div id="ytapiplayer1" class="ytplayer">
+    					You need Flash player 8+ and JavaScript enabled to view this video.
+ 					</div>
+                </div>
             </div>
             <div class="face three">
                     3
