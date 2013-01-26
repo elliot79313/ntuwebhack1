@@ -1,3 +1,43 @@
 @charset "UTF-8";
 /* CSS Document */
-
+#inframe { }
+#experiment {
+   padding-top:80px;
+  -webkit-perspective: 600;
+  -webkit-perspective-origin: 50% 200px;
+}
+#cube {
+	margin-top:20px;
+  position: relative;
+  margin: 0 auto;
+  height: 500px;
+  width: 500px;
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+}
+#leftbar { width:300px; float:left; }
+.face {
+  position: absolute; color:#FFF;
+  height: 450px;
+  width: 450px;
+  padding: 20px;
+  background-color: rgba(50, 50, 50, 0.7);
+}
+#cube .one  {
+  -webkit-transform: rotateX(90deg) translateZ(245px);
+}
+#cube .two {
+  -webkit-transform: translateZ(245px);
+}
+#cube .three {
+  -webkit-transform: rotateY(90deg) translateZ(245px);
+}
+#cube .four {
+  -webkit-transform: rotateY(180deg) translateZ(245px);
+}
+#cube .five {
+  -webkit-transform: rotateY(-90deg) translateZ(245px);
+}
+#cube .six {
+  -webkit-transform: rotateX(-90deg) translateZ(245px) rotate(180deg);
+}
