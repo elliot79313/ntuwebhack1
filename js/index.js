@@ -22,16 +22,24 @@ var Youtube = function(){
 	var playlistPtr = 0;
 	var playPtr = 0;
 	var playerView = new Array(4);
+	var timestatus = null;
 	this.regisPlayer = function(idx){
 		playerView[idx] = $(".face_containter:eq("+idx+")").data("prev",(idx+1)%4).data("next",(idx-1) % 4 < 0? 4 + ((idx-1) % 4):((idx-1) % 4));
 		$(".face_containter:eq("+idx+")").bind("curVideo",function(event, param){
 			var currentPlayer = $(this).find("object")[0];
 			setTimeout(function(){
-				$(this).find("object").width(448).height(252);
+				$(this).find("object").width(448).height(253);
 				currentPlayer.loadVideoById(param);
+				timestatus = setInterval(function(){ 
+					//console.log(currentPlayer.getCurrentTime(),currentPlayer.getDuration());
+					$(".progress-bar span").css("width",currentPlayer.getCurrentTime()*100/currentPlayer.getDuration()+"%");
+					$(".progress-bar label.value").html(parseInt(currentPlayer.getCurrentTime()*100/currentPlayer.getDuration())+"%");
+				},1000);
+				$(this).find("object").width(448).height(252);
 			},1000);
 		});
 		$(".face_containter:eq("+idx+")").bind("nextVideo",function(){
+			clearInterval(timestatus);
 			$(this).find("object")[0].stopVideo();
 			playPtr = $(this).data("next");
 			
@@ -41,10 +49,10 @@ var Youtube = function(){
 			},500);
 		});
 		$(".face_containter:eq("+idx+")").bind("prevVideo",function(){
+			clearInterval(timestatus);
 			$(this).find("object")[0].stopVideo();
 			playPtr = $(this).data("prev");
 			playlistPtr = ((playlistPtr-1) % queue.length  < 0) ? queue.length+((playlistPtr-1) % queue.length): ((playlistPtr-1) % queue.length);
-			console.log(playPtr, playlistPtr);
 			setTimeout(function(){
 				$(".face_containter:eq("+playPtr+")").trigger("curVideo",  $("#queue ul li:eq("+ playlistPtr +")").data("ytID"));
 			},500);
@@ -84,7 +92,9 @@ var Youtube = function(){
 			$("body").trigger("playerright");
 			$("#myytplayer" + playPtr).trigger("nextVideo");
 		});
-		
+		$("#range input").bind("change", function(){
+			$("object")[0].setVolume($(this).val());
+		});
 	};
 	init();
 	var addElement = function(elem, idx){
@@ -113,7 +123,7 @@ var Youtube = function(){
 		
 	for(var x = 0;x <4 ;x++){
 		atts = { id : "myytplayer"+ x };
-		swfobject.embedSWF("http://www.youtube.com/v/Q3WxhfO2O4E?enablejsapi=1&playerapiid=ytplayer"+ x +"&version=3",
+		swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=ytplayer"+ x ,
 				   "ytapiplayer"+x, "448", "252", "8", null, null, params, atts);
 	}
 	
@@ -122,22 +132,18 @@ function onYouTubePlayerReady(playerId) {
 	var id = parseInt( playerId.replace("ytplayer",""));
 	g_youtube.regisPlayer(id);
 	var ytplayer =  document.getElementById("myytplayer"+id);
-	/*ytplayer.addEventListener("onStateChange", function(state){
-		console.log(state);
-		if(state==1){
-			console.log(this);
-		}else if(state==3){
-			console.log(this);
-		}
-		
-	});*/
+	ytplayer.setVolume(20);
   	ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+	
 }
 function onytplayerStateChange(newState){
-console.log(newState);
+	console.log(newState);
 	setTimeout(function(){
 		$("object").css("width",448).css("height",252);
 	},1000);
+	if(newState==0){
+		$("#next").click();
+	}
 }
 function getParameterByName(path,name){
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
