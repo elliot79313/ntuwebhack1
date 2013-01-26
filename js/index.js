@@ -31,7 +31,6 @@ var Youtube = function(){
 				$(this).find("object").width(448).height(253);
 				currentPlayer.loadVideoById(param);
 				timestatus = setInterval(function(){ 
-					//console.log(currentPlayer.getCurrentTime(),currentPlayer.getDuration());
 					$(".progress-bar span").css("width",currentPlayer.getCurrentTime()*100/currentPlayer.getDuration()+"%");
 					$(".progress-bar label.value").html(parseInt(currentPlayer.getCurrentTime()*100/currentPlayer.getDuration())+"%");
 				},1000);
@@ -92,6 +91,16 @@ var Youtube = function(){
 			$("body").trigger("playerright");
 			$("#myytplayer" + playPtr).trigger("nextVideo");
 		});
+		$("#play").toggle(function(){ 
+			$("img",this).attr("src","./images/player_play.png");
+			var currentPlayer = $(".face_containter:eq("+playPtr+")").find("object")[0];
+			currentPlayer.pauseVideo();
+		},function(){ 
+			$("img",this).attr("src","./images/player_pause.png");
+			var currentPlayer = $(".face_containter:eq("+playPtr+")").find("object")[0];
+			currentPlayer.playVideo();
+		});
+		
 		$("#range input").bind("change", function(){
 			$("object")[0].setVolume($(this).val());
 		});

@@ -18,9 +18,9 @@
     	
         <div id="playerlist">
 			<span id="header"><img src="http://www.cliparchiver.com/wp-content/uploads/logo_youtube_16x16.png"/>Youtube 3D Player</span>
-            <div style=" margin-top:20px; margin-left:20px;">
-            <h6>Youtube playlist Link</h6>
-            <input type="text" id="playlisttext" value="" />
+            <div style=" margin-top:20px; margin-left:0px;">
+            <h6 style=" margin-left:20px;">Youtube playlist Link</h6>
+            <input type="text" style="width:283px;" id="playlisttext" value="" />
             </div>
             <div id="queue">
             	<ul>
@@ -30,15 +30,16 @@
         
     </div>
     <div id="fixedPlayerController">
-    	<div id="prev" style=" display:inline-block;"><img src="./images/player_start.png"/><span>Previous</span></div>
-        <div id="next" style=" display:inline-block;"><img src="./images/player_end.png"/><span>Next</span></div>
-        <div id="range" style="display:inline-block;"><img src="./images/volume.png"/><input style="width:130px" type="range" name="points" min="0" max="100" value="20"></div>
+    	<div id="prev" style=" display:inline-block;"><img src="./images/player_start.png"/></div>
+        <div id="play" style=" display:inline-block;"><img src="./images/player_pause.png"/></div>
+        <div id="next" style=" display:inline-block;"><img src="./images/player_end.png"/></div>
         <div id="timestatus"style="display:inline-block;width:220px; height:40px;" >
         	<div class="progress-bar blue stripes" style="top:6px;">
         	<span style="width: 0%"></span>
             <label class="value">0%</label>
             </div>
        	</div>
+        <div id="range" style="display:inline-block;"><img src="./images/volume.png"/><input style="width:130px" type="range" name="points" min="0" max="100" value="20"></div>
     </div>
     <div id="experiment">
         <div id="cube">
