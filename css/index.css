@@ -84,7 +84,7 @@
 color:#FFF; padding:5px 10px;}
 #fixedPlayerController { position:fixed; top:50px; left:360px; z-index:10; }
 #fixedPlayerController  > div {  margin-right:10px; padding-right:20px; font-size:20px; font-family:Calibri; cursor:pointer; border-right:1px solid #A9A9A9; }
-#fixedPlayerController  img { width:40px; margin-right:5px; }
+#fixedPlayerController  img { width:40px; }
 #footer{ position:fixed; bottom:5px; right:5px;color #039;}
 .progress-bar {
 background-color: #1a1a1a;
